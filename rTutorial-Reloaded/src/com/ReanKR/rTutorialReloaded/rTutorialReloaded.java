@@ -1,4 +1,4 @@
-package com.ReanKR.Tutorial.Main;
+package com.ReanKR.rTutorialReloaded;
 
 public class rTutorialReloaded {
 
