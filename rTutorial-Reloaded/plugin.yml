@@ -1,0 +1,19 @@
+﻿name: rTutorialReloaded
+version: 1.0.0
+main: com.ReanKR.rTutorialReloaded.rTutorialReloaded
+author: ReanKR
+depend: [Vault, BarAPI]
+description: It is reloaded the more better than rTutorial.
+commands:
+  rtutorial.main:
+    description: §erTutorial Reloaded Main command
+    aliases: [rt, rtutorial]
+  rtutorial.tutorial:
+    description: §eStart tutorial.
+permissions:
+  tutorial.*:
+    description: §bAvailable rTutorial all commands.
+    default: OP
+  tutorial.run:
+    description: Give Permission running tutorial.
+    default: true

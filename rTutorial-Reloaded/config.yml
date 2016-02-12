@@ -1,4 +1,4 @@
-# rTutorial main configuration
+# rTutorial-Reloaded main configuration
 Main:
   Config-Version: 1
   Run-First-Join-Player: false
@@ -10,6 +10,7 @@ Main:
   Default-Cooldown-Seconds: 5
   Sound-Disabled: true
 Compatibles:
+  BarAPI: false
   TitleAPI: false
   Vault: false
   Economy: false
