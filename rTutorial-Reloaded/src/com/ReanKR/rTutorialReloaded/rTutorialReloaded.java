@@ -45,14 +45,16 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	public static Map<String, String> MainMessages; // MSG_TYPE, Message
 	
 	// Saved variable about tutorial system
-	public static HashMap<Player, String> TutorialStatus;
+	public static HashMap<Player, String> TutorialStatus; // Loaded by Player.yml Status
 	public static HashMap<String, Boolean> TutorialComplete; // Is Player completed tutorial
 	public static HashMap<Player, String> ProgressingTutorial; // Showing the player that tutorial progressing method
-	public static HashMap<Player, Boolean> IsCreateNewLocation;  // Enabled Blocking AsyncChatEvent when creating new data
-	public static HashMap<Player, Boolean> SavedNewLocation;
-	public static HashMap<Player, Integer> CreatingNewLocation;
 	public static HashMap<Player, String> MainMessage;
 	public static HashMap<Player, String> SubMessage;
+	
+	// Saved variable about create to tutorial progress
+	public static HashMap<Player, Boolean> IsCreateNewLocation;  // Enabled Blocking AsyncChatEvent when creating new data
+	public static HashMap<Player, Boolean> SavedNewLocation; // Finished creating all progress
+	public static HashMap<Player, Integer> CreatingNewLocationCount; // 
 
 	// rTutorial Reloaded main variable
 	public static List<String> ErrorReporting; // Save error collection
@@ -61,7 +63,7 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	public static String Prefix = "」e[」9r」aT」futorial」e]」f ";
 	public static Economy Eco;
 	
-	// Substituted for the short
+	// Substituted for sentance contraction
 	private ConsoleCommandSender Server = Bukkit.getConsoleSender();
 	
 	@Override
