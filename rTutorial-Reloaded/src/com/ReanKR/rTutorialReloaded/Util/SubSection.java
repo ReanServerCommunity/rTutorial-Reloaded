@@ -3,6 +3,8 @@ package com.ReanKR.rTutorialReloaded.Util;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import com.ReanKR.rTutorialReloaded.rTutorialReloaded;
+
 public class SubSection
 {
 	public static String Sub(String str, Player p)
@@ -27,6 +29,12 @@ public class SubSection
 	{
 		String replace = ChatColor.translateAlternateColorCodes('&', Str);
 		replace = VariableSub(replace, String.valueOf(object));
+		return replace;
+	}
+	
+	public static String GameMsg(String Str)
+	{
+		String replace = rTutorialReloaded.Prefix + Str;
 		return replace;
 	}
 
