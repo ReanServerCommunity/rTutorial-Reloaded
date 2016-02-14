@@ -13,10 +13,46 @@ Compatibles:
   BarAPI: false
   TitleAPI: false
   Vault: false
-  Economy: false
 # Please modify if your server enabled that associated with Economy plugin.
+  Economy: false
+# ingore command when tutorial progress 
 Exception-Commands:
   - 'rt cancel'
+#
+# %player% : Displace player name
+#
+# Commands Example
+# 'Console: say %player% Tutorial Complete.'
+# -> In the game on chat, [Console] {PlayerName} Tutorial Complete.
+# -> In other words, run command on console.
+#
+# 'Money: 200'
+# -> Give money which amounts. Possible minus amounts :)
+# Required Economy plugin.
+#
+# 'spawn'
+# -> The player run command "spawn" when tutorial complete and has permission.
+#
+# 'OP: say say I'm Complete!'
+# -> The player run command "say I'm Complete!" when tutorial complete. Player don't have to permission.
+#
+# rTutorialReloaded also support custom-items. For example,
+#   Example:
+#     ID: 266
+#     DATA-VALUE: 0
+#     NAME: "&eGold Ingot"
+#     Amounts: 2
+#     DESCRIPTION:
+#     - "&aThis is gold ingot. so rich!"
+#     - "&a[Tutorial Completed Rewards]"
+#     ENCHANTMENT:
+#     - "PROTECTION, 1"
+#     - "WALK_SPEED, 1"
+#
+# New supported method type: Descrption, Enchantment, DisplayName
+# Required method type: ID
+#
+# Available Enchantments 
 Result:
   Run-Commands: true
   Reward-Items: true
@@ -25,11 +61,21 @@ Result:
   - 'Money: 100'
   - 'spawn'
   Items:
-    0:
+    Example:
       ID: 264
       DATA-VALUE: 0
       Amounts: 2
-    1:
+    Example2:
       ID: 266
       DATA-VALUE: 0
       Amounts: 2
+    Custom:
+      ID: 1
+      DATA-VALUE: 0
+      NAME: "&eStrange Stone"
+      Amounts: 2
+      DESCRIPTION:
+      - "&aWhat is it?"
+      - "&eServer: &9I don't know. lol"
+      ENCHANTMENT:
+      - "PROTECTION, 1"

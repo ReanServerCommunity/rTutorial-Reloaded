@@ -47,11 +47,11 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	// Saved variable about tutorial system
 	public static HashMap<Player, String> TutorialStatus; // Loaded by Player.yml Status
 	public static HashMap<String, Boolean> TutorialComplete; // Is Player completed tutorial
-	public static HashMap<Player, String> ProgressingTutorial; // Showing the player that tutorial progressing method
-	public static HashMap<Player, String> MainMessage;
-	public static HashMap<Player, String> SubMessage;
+	public static HashMap<Player, String> ProgressingTutorial; // Showing the player that tutorial progressing method name
+	public static HashMap<Player, String> MainMessage; // Temp message
+	public static HashMap<Player, String> SubMessage; // Temp message
 	
-	// Saved variable about create to tutorial progress
+	// Saved variable about create to tutorial progressing
 	public static HashMap<Player, Boolean> IsCreateNewLocation;  // Enabled Blocking AsyncChatEvent when creating new data
 	public static HashMap<Player, Boolean> SavedNewLocation; // Finished creating all progress
 	public static HashMap<Player, Integer> CreatingCount; // New method amount
@@ -73,6 +73,7 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 		plugin = this;
 		VariableManager.InitAllVariable();
 		Eco = EconomyAPI.getEconomy();
+		
 		Server.sendMessage(Prefix + "」bM」fade 」bb」fy Rean KR,」9 whitehack97@gmail.com");
 		Server.sendMessage(Prefix + "」bD」fevoloper 」bW」febsite 」e: 」fhttp://cafe.naver.com/suserver24");
 	}
