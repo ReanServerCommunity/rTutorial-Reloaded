@@ -30,7 +30,7 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	public static int DefaultCooldownSeconds = 5;
 	public static boolean SoundDisabled = true;
 	public static boolean[] CompatiblePlugins;
-	public static String[] ExceptionCommands;
+	public static List<String> ExceptionCommands;
 	public static boolean RunCommands = true;
 	public static boolean RewardItems = true;
 	public static List<String> ResultCommands;
@@ -54,7 +54,7 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	// Saved variable about create to tutorial progress
 	public static HashMap<Player, Boolean> IsCreateNewLocation;  // Enabled Blocking AsyncChatEvent when creating new data
 	public static HashMap<Player, Boolean> SavedNewLocation; // Finished creating all progress
-	public static HashMap<Player, Integer> CreatingNewLocationCount; // 
+	public static HashMap<Player, Integer> CreatingCount; // New method amount
 
 	// rTutorial Reloaded main variable
 	public static List<String> ErrorReporting; // Save error collection
