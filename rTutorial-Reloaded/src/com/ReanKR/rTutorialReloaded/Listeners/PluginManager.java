@@ -14,30 +14,6 @@ public class PluginManager extends JavaPlugin
 {
 	public static void PluginChecking(ConfigurationSection Node)
 	{
-		/*
-	    if (rTutorialReloaded.server.getPluginManager().isPluginEnabled("Vault"))
-	    {
-	      if (rTutorialReloaded.CompatiblePlugins[1] == false)
-	      {
-	        Bukkit.getConsoleSender().sendMessage(rTutorialReloaded.Prefix + "¡×dVault Hooked");
-	        SwitchCompatiblePlugin("Vault");
-	      }
-	      else
-	      {
-	        Bukkit.getConsoleSender().sendMessage(rTutorialReloaded.Prefix + "¡×dVault Hooked");
-	      }
-	    }
-
-	    if (!rTutorialReloaded.server.getPluginManager().isPluginEnabled("Vault"))
-	    {
-	    	if (rTutorialReloaded.CompatiblePlugins[1] == true)
-	      	{
-	        rTutorialReloaded.ErrorReporting.add("Compatible,Vault_NOT_FOUND");
-	        SwitchCompatiblePlugin("Vault");
-	      	}
-	    }
-	    */
-		
 		if(! rTutorialReloaded.server.getPluginManager().isPluginEnabled("Vault"))
 		{
 			if(Node.getBoolean("Vault"))
@@ -115,16 +91,26 @@ public class PluginManager extends JavaPlugin
 				rTutorialReloaded.server.getConsoleSender().sendMessage(rTutorialReloaded.Prefix + "¡×3TitleAPI Hooked");
 			}
 	    }
+		
+		LoadPluginStatus();
+		return;
 	}
 	public static void SwitchCompatiblePlugin(String PluginName)
 	{
 		FileConfiguration Config = rTutorialReloaded.plugin.getConfig();
-		ConfigurationSection MainNode = Config.getConfigurationSection("Compatibles");
 		ConfigurationSection CS = Config.getConfigurationSection("Compatibles");
 		CS.set(PluginName, Boolean.valueOf(!CS.getBoolean(PluginName)));
 		rTutorialReloaded.plugin.saveConfig();
-		rTutorialReloaded.CompatiblePlugins[0] = MainNode.getBoolean("TitleAPI");
+		LoadPluginStatus();
+	}
+	
+	public static void LoadPluginStatus()
+	{
+		ConfigurationSection MainNode = rTutorialReloaded.plugin.getConfig().getConfigurationSection("Compatibles");
+		rTutorialReloaded.CompatiblePlugins[0] = MainNode.getBoolean("BarAPI");
 		rTutorialReloaded.CompatiblePlugins[1] = MainNode.getBoolean("Vault");
 		rTutorialReloaded.CompatiblePlugins[2] = MainNode.getBoolean("Economy");
+		rTutorialReloaded.CompatiblePlugins[3] = MainNode.getBoolean("TitleAPI");
+		return;
 	}
 }
