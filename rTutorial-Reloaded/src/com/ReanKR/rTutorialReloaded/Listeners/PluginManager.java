@@ -37,6 +37,7 @@ public class PluginManager extends JavaPlugin
 				SwitchCompatiblePlugin("Vault");
 				Bukkit.getConsoleSender().sendMessage(rTutorialReloaded.Prefix + "¡×dVault Hooked");
 			}
+
 			else
 			{
 				Bukkit.getConsoleSender().sendMessage(rTutorialReloaded.Prefix + "¡×dVault Hooked");
@@ -51,6 +52,7 @@ public class PluginManager extends JavaPlugin
 					SwitchCompatiblePlugin("Economy");
 				}
 			}
+	
 			else
 			{
 				if(Node.getBoolean("Economy"))
@@ -68,6 +70,7 @@ public class PluginManager extends JavaPlugin
 				SwitchCompatiblePlugin("BarAPI");
 			}
 		}
+
 		else
 		{
 			if(Node.getBoolean("BarAPI"))
@@ -84,6 +87,7 @@ public class PluginManager extends JavaPlugin
 				SwitchCompatiblePlugin("TitleAPI");
 			}
 		}
+
 	    else
 	    {
 			if(Node.getBoolean("TitleAPI"))

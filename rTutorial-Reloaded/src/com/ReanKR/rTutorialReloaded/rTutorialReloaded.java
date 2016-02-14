@@ -15,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.ReanKR.rTutorialReloaded.File.ConfigLoader;
 import com.ReanKR.rTutorialReloaded.Listeners.EconomyAPI;
+import com.ReanKR.rTutorialReloaded.Util.ErrorReporter;
 import com.ReanKR.rTutorialReloaded.Util.VariableManager;
 
 import net.milkbowl.vault.economy.Economy;
@@ -80,6 +81,7 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 		CL.LoadCfg();
 		CL.LoadMessage();
 		Eco = EconomyAPI.getEconomy();
+		ErrorReporter.ResultErrorReport();
 		Console.sendMessage(Prefix + "」bM」fade 」bb」fy Rean KR,」9 whitehack97@gmail.com");
 		Console.sendMessage(Prefix + "」bD」fevoloper 」bW」febsite 」e: 」fhttp://cafe.naver.com/suserver24");
 	}
