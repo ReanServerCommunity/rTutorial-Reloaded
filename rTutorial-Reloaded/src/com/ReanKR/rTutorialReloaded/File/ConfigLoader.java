@@ -10,6 +10,7 @@ import org.bukkit.material.MaterialData;
 
 import com.ReanKR.rTutorialReloaded.rTutorialReloaded;
 import com.ReanKR.rTutorialReloaded.File.FileSection;
+import com.ReanKR.rTutorialReloaded.Listeners.PluginManager;
 import com.ReanKR.rTutorialReloaded.Util.SubSection;
 
 public class ConfigLoader
@@ -63,6 +64,16 @@ public class ConfigLoader
 					}
 				}
 				else if(Str.equalsIgnoreCase("Compatibles"))
+				{
+					PluginManager.PluginChecking(MainNode);
+				}
+				
+				else if(Str.equalsIgnoreCase("Exception-Commands"))
+				{
+					
+				}
+				
+				else if(Str.equalsIgnoreCase("Result"))
 				{
 					
 				}

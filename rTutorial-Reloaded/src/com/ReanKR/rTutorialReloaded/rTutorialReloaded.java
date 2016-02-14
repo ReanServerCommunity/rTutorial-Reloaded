@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -61,11 +62,12 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	public static List<String> ErrorReporting; // Save error collection
 	public static rTutorialReloaded RTutorialReloaded;
 	public static Plugin plugin;
+	public static Server server;
 	public static String Prefix = "」e[」9r」aT」futorial」e]」f ";
 	public static Economy Eco;
 	
 	// Substituted for sentance contraction
-	private ConsoleCommandSender Server = Bukkit.getConsoleSender();
+	private ConsoleCommandSender Console = Bukkit.getConsoleSender();
 	private ConfigLoader CL = new ConfigLoader();
 	
 	@Override
@@ -73,12 +75,13 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	{
 		RTutorialReloaded = this;
 		plugin = this;
+		server = (Server)this;
 		VariableManager.InitAllVariable();
 		CL.LoadCfg();
 		CL.LoadMessage();
 		Eco = EconomyAPI.getEconomy();
-		Server.sendMessage(Prefix + "」bM」fade 」bb」fy Rean KR,」9 whitehack97@gmail.com");
-		Server.sendMessage(Prefix + "」bD」fevoloper 」bW」febsite 」e: 」fhttp://cafe.naver.com/suserver24");
+		Console.sendMessage(Prefix + "」bM」fade 」bb」fy Rean KR,」9 whitehack97@gmail.com");
+		Console.sendMessage(Prefix + "」bD」fevoloper 」bW」febsite 」e: 」fhttp://cafe.naver.com/suserver24");
 	}
 	
 	@Override
