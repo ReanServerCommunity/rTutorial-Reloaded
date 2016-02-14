@@ -22,5 +22,12 @@ public class SubSection
 		String replace = ChatColor.translateAlternateColorCodes('&', Str);
 		return replace;
 	}
+	
+	public static String OutSys(String Str, Object object)
+	{
+		String replace = ChatColor.translateAlternateColorCodes('&', Str);
+		replace = VariableSub(replace, String.valueOf(object));
+		return replace;
+	}
 
 }

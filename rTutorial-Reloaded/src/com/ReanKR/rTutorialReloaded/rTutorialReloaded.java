@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.ReanKR.rTutorialReloaded.File.ConfigLoader;
 import com.ReanKR.rTutorialReloaded.Listeners.EconomyAPI;
 import com.ReanKR.rTutorialReloaded.Util.VariableManager;
 
@@ -65,6 +66,7 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	
 	// Substituted for sentance contraction
 	private ConsoleCommandSender Server = Bukkit.getConsoleSender();
+	private ConfigLoader CL = new ConfigLoader();
 	
 	@Override
 	public void onEnable()
@@ -72,6 +74,8 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 		RTutorialReloaded = this;
 		plugin = this;
 		VariableManager.InitAllVariable();
+		CL.LoadCfg();
+		CL.LoadMessage();
 		Eco = EconomyAPI.getEconomy();
 		Server.sendMessage(Prefix + "」bM」fade 」bb」fy Rean KR,」9 whitehack97@gmail.com");
 		Server.sendMessage(Prefix + "」bD」fevoloper 」bW」febsite 」e: 」fhttp://cafe.naver.com/suserver24");

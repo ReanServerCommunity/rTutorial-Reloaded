@@ -26,5 +26,4 @@ public class VariableManager
 		rTutorialReloaded.CreatingCount = new HashMap();
 		rTutorialReloaded.ErrorReporting = new ArrayList();
 	}
-
 }

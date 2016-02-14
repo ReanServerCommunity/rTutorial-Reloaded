@@ -4,15 +4,19 @@
 #
 # %player% : Player Name
 # %var% : Object variable or call other function
+# If the sentance include variable "%var", Don't delete it.
 Messages:
   UnknownCommand: "알수 없는 명령어입니다. /rt"
   FirstJoin: "%player%님 환영합니다! 처음 방문이라면 /tutorial를 사용해 서버 튜토리얼을 해보십시오!"
   NotCompleteTutorial: "&c튜토리얼을 완료하지 않았습니다."
   CompleteTutorial: "&a튜토리얼을 완료하였습니다."
-  PermissionDenied: "&4튜토리얼을 수정할 수 있는 권한이 없습니다!"
+  CompleteCreatingMethod: "&a위치 및 메세지가 임시 저장되었습니다. 해당 명령어를 치면 저장됩니다."
+  PermissionDeniedToEdit: "&4튜토리얼을 수정할 수 있는 권한이 없습니다!"
   GiveFollowReward: "다음과 같은 보상이 주어집니다."
   LeftSeconds: "튜토리얼 시작 %var%초전"
   StartTutorial: "튜토리얼을 시작하겠습니다!"
   BlockCommandWhenCreate: "&c새로운 위치를 만드는 중에는 다른 커맨드를 사용할 수 없습니다."
   BlockCommandWhenTutorial: "&c튜토리얼 중에는 다른 커맨드를 사용할 수 없습니다."
   BlockChatWhenTutorial: "&c튜토리얼 중에는 명령어나 대화를 할 수 없습니다."
+  CancelCommand: "&c취소하려면 %var%"
+  ContinueCommand: "&a계속 진행하려면 %var%"
