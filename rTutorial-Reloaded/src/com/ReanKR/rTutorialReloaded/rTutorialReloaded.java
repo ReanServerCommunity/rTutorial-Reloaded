@@ -42,7 +42,7 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	public static int MethodAmount = 0; // Location method amount
 	
 	// Saved variable loaded by message.yml 
-	public static Map<String, String> MainMessages; // MSG_TYPE, Message
+	public static Map<String, String> SystemMessage; // MSG_TYPE, Message
 	
 	// Saved variable about tutorial system
 	public static HashMap<Player, String> TutorialStatus; // Loaded by Player.yml Status
@@ -73,7 +73,6 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 		plugin = this;
 		VariableManager.InitAllVariable();
 		Eco = EconomyAPI.getEconomy();
-		
 		Server.sendMessage(Prefix + "」bM」fade 」bb」fy Rean KR,」9 whitehack97@gmail.com");
 		Server.sendMessage(Prefix + "」bD」fevoloper 」bW」febsite 」e: 」fhttp://cafe.naver.com/suserver24");
 	}

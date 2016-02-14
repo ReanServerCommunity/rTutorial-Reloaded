@@ -26,6 +26,8 @@ public class CreateNewLocation extends JavaPlugin
 		else
 		{
 			rTutorialReloaded.SubMessage.put(e.getPlayer(), e.getMessage());
+			rTutorialReloaded.IsCreateNewLocation.remove(e.getPlayer());
+			rTutorialReloaded.SavedNewLocation.put(e.getPlayer(), true);
 		}
 	}
 	

@@ -1,5 +1,6 @@
 package com.ReanKR.rTutorialReloaded.File;
 
+import java.util.HashMap;
 import java.util.Set;
 
 import org.bukkit.configuration.ConfigurationSection;
@@ -9,6 +10,7 @@ import org.bukkit.material.MaterialData;
 
 import com.ReanKR.rTutorialReloaded.rTutorialReloaded;
 import com.ReanKR.rTutorialReloaded.File.FileSection;
+import com.ReanKR.rTutorialReloaded.Util.SubSection;
 
 public class ConfigLoader
 {
@@ -30,6 +32,39 @@ public class ConfigLoader
 						plugin.getPluginLoader().disablePlugin(rTutorialReloaded.RTutorialReloaded);
 						return;
 					}
+					
+					if(MainNode.isSet("Run-First-Join-Player"))
+					{
+						rTutorialReloaded.RunFirstJoinPlayer = MainNode.getBoolean("Run-First-Join-Player");
+					}
+					if(MainNode.isSet("Block-Movement"))
+					{
+						rTutorialReloaded.BlockMovement = MainNode.getBoolean("Block-Movement");
+					}
+					if(MainNode.isSet("Block-All-Commands"))
+					{
+						rTutorialReloaded.BlockAllCommands = MainNode.getBoolean("Block-All-Commands");
+					}
+					if(MainNode.isSet("Broadcast-Complete-Tutorial"))
+					{
+						rTutorialReloaded.BroadcastCompleteTutorial = MainNode.getBoolean("Broadcast-Complete-Tutorial");
+					}
+					if(MainNode.isSet("Edit-Complete"))
+					{
+						rTutorialReloaded.EditComplete = MainNode.getBoolean("Edit-Complete");
+					}
+					if(MainNode.isSet("Default-Delay-Seconds"))
+					{
+						rTutorialReloaded.DefaultDelaySeconds = MainNode.getInt("Default-Delay-Seconds");
+					}
+					if(MainNode.isSet("Default-Cooldown-Seconds"))
+					{
+						rTutorialReloaded.DefaultCooldownSeconds = MainNode.getInt("Default-Cooldown-Seconds");
+					}
+				}
+				else if(Str.equalsIgnoreCase("Compatibles"))
+				{
+					
 				}
 			}
 			catch(NullPointerException e)
@@ -37,6 +72,17 @@ public class ConfigLoader
 				
 			}
 		}
+	}
+	public void LoadMessage()
+	{
+		FileConfiguration LangFile = FileSection.LoadFile("message.yml");
+	    ConfigurationSection LangNode = LangFile.getConfigurationSection("Messages");
+	    Set<String> MessageMethod = LangNode.getKeys(true);
+	    for(String MethodName: MessageMethod)
+	    {
+	    	rTutorialReloaded.SystemMessage.put(MethodName, SubSection.RepColor(LangNode.getString(MethodName)));
+	    }
+	    return;
 	}
 	    /*
 	    try
