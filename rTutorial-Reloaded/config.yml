@@ -52,7 +52,7 @@ Exception-Commands:
 # New supported method type: Descrption, Enchantment, DisplayName
 # Required method type: ID
 #
-# Available Enchantments 
+# Available Enchantments -> Enchantments.yml
 Result:
   Run-Commands: true
   Reward-Items: true
@@ -75,7 +75,7 @@ Result:
       NAME: "&eStrange Stone"
       Amounts: 2
       DESCRIPTION:
-      - "&aWhat is it?"
+      - "&aUser: What is it?"
       - "&eServer: &9I don't know. lol"
       ENCHANTMENT:
-      - "PROTECTION, 1"
+      - PROTECTION, 1

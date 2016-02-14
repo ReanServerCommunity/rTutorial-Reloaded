@@ -18,6 +18,7 @@ public class ConfigLoader
 	public static rTutorialReloaded plugin = rTutorialReloaded.RTutorialReloaded;
 	public void LoadCfg()
 	{
+		FileSection.LoadFile("Enchantments");
 		FileConfiguration ConfigFile = FileSection.LoadFile("config");
 		Set<String> Keyword = ConfigFile.getKeys(false);
 		for(String Str : Keyword)
@@ -70,7 +71,7 @@ public class ConfigLoader
 				
 				else if(Str.equalsIgnoreCase("Exception-Commands"))
 				{
-					
+					rTutorialReloaded.ExceptionCommands = ConfigFile.getStringList("Exception-Commands");
 				}
 				
 				else if(Str.equalsIgnoreCase("Result"))

@@ -2,6 +2,7 @@ package com.ReanKR.rTutorialReloaded.Listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Server;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,9 +13,11 @@ import net.milkbowl.vault.economy.Economy;
 
 public class PluginManager extends JavaPlugin
 {
+	private static Server server = rTutorialReloaded.plugin.getServer();
+
 	public static void PluginChecking(ConfigurationSection Node)
 	{
-		if(! rTutorialReloaded.server.getPluginManager().isPluginEnabled("Vault"))
+		if(! server.getPluginManager().isPluginEnabled("Vault"))
 		{
 			if(Node.getBoolean("Vault"))
 			{
@@ -51,18 +54,17 @@ public class PluginManager extends JavaPlugin
 					rTutorialReloaded.ErrorReporting.add("config.yml, Compatibles, Economy API not hooked");
 					SwitchCompatiblePlugin("Economy");
 				}
-			}
-	
-			else
-			{
-				if(Node.getBoolean("Economy"))
+				else
 				{
-					rTutorialReloaded.server.getConsoleSender().sendMessage(rTutorialReloaded.Prefix + ChatColor.GREEN + echo.getName() + " Hooked");
+					if(Node.getBoolean("Economy"))
+					{
+						server.getConsoleSender().sendMessage(rTutorialReloaded.Prefix + ChatColor.GREEN + echo.getName() + " Hooked");
+					}
 				}
 			}
 		}
 		
-		if(! rTutorialReloaded.server.getPluginManager().isPluginEnabled("BarAPI"))
+		if(! server.getPluginManager().isPluginEnabled("BarAPI"))
 		{
 			if(Node.getBoolean("BarAPI"))
 			{
@@ -75,11 +77,11 @@ public class PluginManager extends JavaPlugin
 		{
 			if(Node.getBoolean("BarAPI"))
 			{
-				rTutorialReloaded.server.getConsoleSender().sendMessage(rTutorialReloaded.Prefix + "」3BarAPI Hooked");
+				server.getConsoleSender().sendMessage(rTutorialReloaded.Prefix + "」eBarAPI Hooked");
 			}
 		}
 
-		if(! rTutorialReloaded.server.getPluginManager().isPluginEnabled("TitleAPI"))
+		if(! server.getPluginManager().isPluginEnabled("TitleAPI"))
 		{
 			if(Node.getBoolean("TitleAPI"))
 			{
@@ -92,7 +94,7 @@ public class PluginManager extends JavaPlugin
 	    {
 			if(Node.getBoolean("TitleAPI"))
 			{
-				rTutorialReloaded.server.getConsoleSender().sendMessage(rTutorialReloaded.Prefix + "」3TitleAPI Hooked");
+				server.getConsoleSender().sendMessage(rTutorialReloaded.Prefix + "」bTitleAPI Hooked");
 			}
 	    }
 		

@@ -14,7 +14,7 @@ public class FileSection
 	    {
 	      Path = Path + ".yml";
 	    }
-	    File file = new File("plugins/rTutorial/" + Path);
+	    File file = new File("plugins/rTutorialReloaded/" + Path);
 	    if(!file.exists())
 	    {
 	      try

@@ -63,8 +63,7 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	public static List<String> ErrorReporting; // Save error collection
 	public static rTutorialReloaded RTutorialReloaded;
 	public static Plugin plugin;
-	public static Server server;
-	public static String Prefix = "」e[」9r」aT」futorial」e]」f ";
+	public static String Prefix = "」e[」9r」aT」butorial」e]」f ";
 	public static Economy Eco;
 	
 	// Substituted for sentance contraction
@@ -76,7 +75,6 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	{
 		RTutorialReloaded = this;
 		plugin = this;
-		server = (Server)this;
 		VariableManager.InitAllVariable();
 		CL.LoadCfg();
 		CL.LoadMessage();
