@@ -1,10 +1,15 @@
 package com.ReanKR.rTutorialReloaded.File;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.MaterialData;
 
@@ -16,52 +21,60 @@ import com.ReanKR.rTutorialReloaded.Util.SubSection;
 public class ConfigLoader
 {
 	public static rTutorialReloaded plugin = rTutorialReloaded.RTutorialReloaded;
+	@SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
 	public void LoadCfg()
 	{
 		FileSection.LoadFile("Enchantments");
 		FileConfiguration ConfigFile = FileSection.LoadFile("config");
 		Set<String> Keyword = ConfigFile.getKeys(false);
-		for(String Str : Keyword)
+		for(String Str : Keyword) // Main, Compatibles, Exception-Commands, Result
 		{
-			ConfigurationSection MainNode = ConfigFile.getConfigurationSection(Str);
+			ConfigurationSection MainNode = FileSection.PlusSelect(ConfigFile, Str);
 			try
 			{
 				if(Str.equalsIgnoreCase("Main"))
 				{
-					if(! MainNode.isSet("Config-Version"))
+					Set<String> MainKeyword = MainNode.getKeys(false);
+					for(String MainStr : MainKeyword)
 					{
-						rTutorialReloaded.ErrorReporting.add("config.yml - Missing Config Version.");
-						plugin.getPluginLoader().disablePlugin(rTutorialReloaded.RTutorialReloaded);
-						return;
-					}
-					
-					if(MainNode.isSet("Run-First-Join-Player"))
-					{
-						rTutorialReloaded.RunFirstJoinPlayer = MainNode.getBoolean("Run-First-Join-Player");
-					}
-					if(MainNode.isSet("Block-Movement"))
-					{
-						rTutorialReloaded.BlockMovement = MainNode.getBoolean("Block-Movement");
-					}
-					if(MainNode.isSet("Block-All-Commands"))
-					{
-						rTutorialReloaded.BlockAllCommands = MainNode.getBoolean("Block-All-Commands");
-					}
-					if(MainNode.isSet("Broadcast-Complete-Tutorial"))
-					{
-						rTutorialReloaded.BroadcastCompleteTutorial = MainNode.getBoolean("Broadcast-Complete-Tutorial");
-					}
-					if(MainNode.isSet("Edit-Complete"))
-					{
-						rTutorialReloaded.EditComplete = MainNode.getBoolean("Edit-Complete");
-					}
-					if(MainNode.isSet("Default-Delay-Seconds"))
-					{
-						rTutorialReloaded.DefaultDelaySeconds = MainNode.getInt("Default-Delay-Seconds");
-					}
-					if(MainNode.isSet("Default-Cooldown-Seconds"))
-					{
-						rTutorialReloaded.DefaultCooldownSeconds = MainNode.getInt("Default-Cooldown-Seconds");
+						if(MainStr.equalsIgnoreCase("Config-Version") && ! MainNode.isSet("Config-Version"))
+						{
+							rTutorialReloaded.ErrorReporting.add("config.yml - Missing Config Version.");
+							plugin.getPluginLoader().disablePlugin(rTutorialReloaded.RTutorialReloaded);
+							return;
+						}
+						else if(MainStr.equalsIgnoreCase("Run-First-Join-Player") && MainNode.isSet("Run-First-Join-Player"))
+						{
+							rTutorialReloaded.RunFirstJoinPlayer = MainNode.getBoolean("Run-First-Join-Player");
+						}
+						else if(MainStr.equalsIgnoreCase("Block-Movement") && MainNode.isSet("Block-Movement"))
+						{
+							rTutorialReloaded.BlockMovement = MainNode.getBoolean("Block-Movement");
+						}
+						else if(MainStr.equalsIgnoreCase("Block-All-Commands") && MainNode.isSet("Block-All-Commands"))
+						{
+							rTutorialReloaded.BlockAllCommands = MainNode.getBoolean("Block-All-Commands");
+						}
+						else if(MainStr.equalsIgnoreCase("Broadcast-Complete-Tutorial") && MainNode.isSet("Broadcast-Complete-Tutorial"))
+						{
+							rTutorialReloaded.BroadcastCompleteTutorial = MainNode.getBoolean("Broadcast-Complete-Tutorial");
+						}
+						else if(MainStr.equalsIgnoreCase("Edit-Complete") && MainNode.isSet("Edit-Complete"))
+						{
+							rTutorialReloaded.EditComplete = MainNode.getBoolean("Edit-Complete");
+						}
+						else if(MainStr.equalsIgnoreCase("Default-Delay-Seconds") && MainNode.isSet("Default-Delay-Seconds"))
+						{
+							rTutorialReloaded.DefaultDelaySeconds = MainNode.getInt("Default-Delay-Seconds");
+						}
+						else if(MainStr.equalsIgnoreCase("Default-Cooldown-Seconds") && MainNode.isSet("Default-Cooldown-Seconds"))
+						{
+							rTutorialReloaded.DefaultCooldownSeconds = MainNode.getInt("Default-Cooldown-Seconds");
+						}
+						else if(MainStr.equalsIgnoreCase("Sound-Disabled") && MainNode.isSet("Sound-Disabled"))
+						{
+							rTutorialReloaded.SoundDisabled = MainNode.getBoolean("Sound-Disabled");
+						}
 					}
 				}
 				else if(Str.equalsIgnoreCase("Compatibles"))
@@ -76,15 +89,74 @@ public class ConfigLoader
 				
 				else if(Str.equalsIgnoreCase("Result"))
 				{
+					Set<String> ResultKeyword = MainNode.getKeys(false);
+					for(String ResultStr : ResultKeyword)
+					{
+						if(ResultStr.equalsIgnoreCase("Run-Commands") && MainNode.isSet("Run-Commands"))
+						{
+							rTutorialReloaded.RunCommands = MainNode.getBoolean("Run-Commands");
+						}
+						else if(ResultStr.equalsIgnoreCase("Reward-Items") && MainNode.isSet("Reward-Items"))
+						{
+							rTutorialReloaded.RewardItems = MainNode.getBoolean("Reward-Items");
+						}
+						else if(ResultStr.equalsIgnoreCase("Commands") && MainNode.isSet("Commands"))
+						{
+							rTutorialReloaded.ResultCommands = MainNode.getStringList("Commands");
+						}
+						else if(ResultStr.equalsIgnoreCase("Items") && MainNode.isSet("Items"))
+						{
+							Set<String> ItemKeyword = FileSection.PlusSelect(MainNode, "Items").getKeys(false);
+							for(String ItemStr : ItemKeyword)
+							{
+								ConfigurationSection ItemNode = FileSection.PlusSelect(FileSection.PlusSelect(MainNode, "Items"), ItemStr);
+				                int ID = 0;
+				                int Amounts = 0;
+				                byte Data = 0;
+								List<String> Lores = new ArrayList();
+								List<String> EnchantList = new ArrayList();
+				                Map<Enchantment, Integer> Enchantments = new HashMap();
+				                String DisplayName = null;
+				                short Durability = 0;
+				                try
+				                {
+				                  ID = Integer.valueOf(ItemNode.getInt("ID"));
+				                  Data = Byte.parseByte(ItemNode.getString("DATA-VALUE"));
+				                  Amounts = Integer.valueOf(ItemNode.getInt("Amounts"));
+				                  Lores = ItemNode.getStringList("DESCRIPTION");
+				                  EnchantList = ItemNode.getStringList("ENCHANTMENT");
+				                  DisplayName = ItemNode.getString("NAME");
+				                  Durability = Short.valueOf(ItemNode.getString("DURABILITY"));
+				                }
+				                catch (NullPointerException e)
+				                {
+				                  rTutorialReloaded.ErrorReporting.add("config.yml - Results - Items - " + ItemStr + " - ItemMeta Incorrect Values.");
+				                  continue;
+				                }
+				                for(String Enchant : EnchantList)
+				                {
+				                	String[] Filter = Enchant.split(", ");
+				                	Enchantments.put(Enchantment.getByName(Filter[0]), Integer.valueOf(Filter[1]));
+				                }
+								ItemStack item = new MaterialData(ID, Data).toItemStack(Amounts);
+								item.getItemMeta().setDisplayName(DisplayName);
+								item.getItemMeta().setLore(Lores);
+								item.setDurability(Durability);
+								item.addUnsafeEnchantments(Enchantments);
+								rTutorialReloaded.ResultItems.add(item);
+							}
+						}
+					}
 					
 				}
 			}
 			catch(NullPointerException e)
 			{
-				
+				rTutorialReloaded.ErrorReporting.add("config.yml - " + Str + " - Tried to return null value.");
 			}
 		}
 	}
+
 	public void LoadMessage()
 	{
 		FileConfiguration LangFile = FileSection.LoadFile("message.yml");
@@ -96,119 +168,4 @@ public class ConfigLoader
 	    }
 	    return;
 	}
-	    /*
-	    try
-	    {
-	      for (String Str : Keyword)
-	      {
-	        ConfigurationSection MainNode = ConfigFile.getConfigurationSection(Str);
-	        try
-	        {
-	          boolean ProblemNotFound = true;
-	          if (Str.equalsIgnoreCase("Main"))
-	          {
-	            if (!MainNode.isSet("Config-Version"))
-	            {
-	              rTutorial.ErrorReporting.add(Str + ",MISSING_CONFIG_VERSION");
-	              ProblemNotFound = false;
-	            }
-
-	            if (!MainNode.isSet("Run-First-Join-Player"))
-	            {
-	              rTutorial.ErrorReporting.add(Str + ",MISSING_VALUE_RUN_FIRST_JOIN_PLAYER");
-	              ProblemNotFound = false;
-	            }
-
-	            if (MainNode.isSet("Block-Movement"))
-	            {
-	              rTutorial.BlockMovement = MainNode.getBoolean("Block-Movement");
-	            }
-
-	            if (MainNode.isSet("Block-All-Commands"))
-	            {
-	              rTutorial.BlockAllCommands = MainNode.getBoolean("Block-All-Commands");
-	            }
-
-	            if (MainNode.isSet("Broadcast-Complete-Tutorial"))
-	            {
-	              rTutorial.CompleteBroadcast = MainNode.getBoolean("Broadcast-Complete-Tutorial");
-	            }
-
-	            if (!MainNode.isSet("Edit-Complete"))
-	            {
-	              rTutorial.ErrorReporting.add(Str + ",MISSING_VALUE_EDIT_COMPLETE");
-	              ProblemNotFound = false;
-	            }
-	            rTutorial.ConfigVersion = MainNode.getInt("Config-Version");
-	            rTutorial.RunFirstJoinPlayer = MainNode.getBoolean("Run-First-Join-Player");
-	            rTutorial.EditComplete = MainNode.getBoolean("Edit-Complete");
-	            rTutorial.DefaultDelaySeconds = MainNode.getInt("Default-Delay-Seconds");
-	            rTutorial.DefaultCooldownSeconds = MainNode.getInt("Default-Cooldown-Seconds");
-	            rTutorial.SoundDisabled = MainNode.getBoolean("Sound-Disabled");
-	          }
-	          if (ProblemNotFound)
-	          {
-	            if (Str.equalsIgnoreCase("Compatibles"))
-	            {
-	              rTutorial.CompatiblePlugins[0] = MainNode.getBoolean("TitleAPI");
-	              rTutorial.CompatiblePlugins[1] = MainNode.getBoolean("Vault");
-	              rTutorial.CompatiblePlugins[2] = MainNode.getBoolean("Economy");
-	            }
-
-	            if (!Str.equalsIgnoreCase("Result"))
-	              continue;
-	            rTutorial.ResultCommands.addAll(MainNode.getStringList("Commands"));
-
-	            ConfigurationSection ResultNode = PlusSelect(MainNode, "Items");
-	            Set<String> Results = ResultNode.getKeys(false);
-	            for (String ResultKeyword : Results)
-	            {
-	              if (isNumber(ResultKeyword))
-	              {
-	                int ID = 0;
-	                int Amounts = 0;
-	                byte Data = 0;
-	                ConfigurationSection ResultNode2 = PlusSelect(ResultNode, ResultKeyword);
-	                try
-	                {
-	                  ID = Integer.valueOf(ResultNode2.getInt("ID")).intValue();
-	                  Data = Byte.parseByte(ResultNode2.getString("DATA-VALUE"));
-	                  Amounts = Integer.parseInt(ResultNode2.getString("Amounts"));
-	                }
-	                catch (NullPointerException e)
-	                {
-	                  rTutorial.ErrorReporting.add(Str + "," + ResultKeyword + ",LOAD_FAILED_ITEM_INFO");
-	                  continue;
-	                }
-	                @SuppressWarnings("deprecation")
-					ItemStack item = new MaterialData(ID, Data).toItemStack(Amounts);
-	                rTutorial.ResultItems.add(item);
-	              }
-	              else
-	              {
-	                rTutorial.ErrorReporting.add(Str + "," + ResultKeyword + ",MUST_INTEGER_METHOD");
-	              }
-	            }
-
-	          }
-	          else
-	          {
-	            rTutorial.ErrorReporting.add(Str + ",MISSING_REQUIED_CONFIG_VALUE");
-	            return;
-	          }
-	        }
-	        catch (NullPointerException e)
-	        {
-	          e.printStackTrace();
-	          rTutorial.ErrorReporting.add(Str + ",MISSING_CONFIG_VALUE");
-	        }
-	      }
-
-	    }
-	    catch (NullPointerException e)
-	    {
-	      rTutorial.ErrorReporting.add("ConfigFile,MISSING_KEY_VALUE");
-	    }
-	  }
-	  */
 }

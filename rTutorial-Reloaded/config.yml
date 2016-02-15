@@ -8,14 +8,14 @@
 # -> In other words, run command on console.
 #
 # 'Money: 200'
-# -> Give money which amounts. Possible minus amounts :)
+# -> Give money which amounts.
 # Required Economy plugin.
 #
 # 'spawn'
 # -> The player run command "spawn" when tutorial complete and has permission.
 #
-# 'OP: say say I'm Complete!'
-# -> The player run command "say I'm Complete!" when tutorial complete. Player don't have to permission.
+# 'OP: say I'm Complete!'
+# -> The player run command "say I'm Complete!" when tutorial complete and don't have to permission, because of using OP permission.
 #
 # rTutorialReloaded also support custom-items. For example,
 #   Example:
@@ -28,7 +28,7 @@
 #     - "&a[Tutorial Completed Rewards]"
 #     ENCHANTMENT:
 #     - "PROTECTION, 1"
-#     - "WALK_SPEED, 1"
+#     - "BLAST_PROTECTION, 1"
 #
 # New supported method type: Descrption, Enchantment, DisplayName
 # Required method type: ID
@@ -43,7 +43,7 @@ Main:
   Edit-Complete: false
   Default-Delay-Seconds: 6
   Default-Cooldown-Seconds: 5
-  Sound-Disabled: true
+  Sound-Disabled: false
 Compatibles:
   BarAPI: false
   TitleAPI: false
