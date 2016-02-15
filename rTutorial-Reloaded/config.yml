@@ -1,23 +1,4 @@
 # rTutorial-Reloaded main configuration
-Main:
-  Config-Version: 1
-  Run-First-Join-Player: false
-  Block-Movement: true
-  Block-All-Commands: true
-  Broadcast-Complete-Tutorial: false
-  Edit-Complete: false
-  Default-Delay-Seconds: 6
-  Default-Cooldown-Seconds: 5
-  Sound-Disabled: true
-Compatibles:
-  BarAPI: false
-  TitleAPI: false
-  Vault: false
-# Please modify if your server enabled that associated with Economy plugin.
-  Economy: false
-# ingore command when tutorial progress 
-Exception-Commands:
-  - 'rt cancel'
 #
 # %player% : Displace player name
 #
@@ -53,6 +34,25 @@ Exception-Commands:
 # Required method type: ID
 #
 # Available Enchantments -> Enchantments.yml
+Main:
+  Config-Version: 1
+  Run-First-Join-Player: false
+  Block-Movement: true
+  Block-All-Commands: true
+  Broadcast-Complete-Tutorial: false
+  Edit-Complete: false
+  Default-Delay-Seconds: 6
+  Default-Cooldown-Seconds: 5
+  Sound-Disabled: true
+Compatibles:
+  BarAPI: false
+  TitleAPI: false
+  Vault: false
+# Please modify if your server enabled that associated with Economy plugin.
+  Economy: false
+# ingore command when tutorial progress 
+Exception-Commands:
+  - 'rt cancel'
 Result:
   Run-Commands: true
   Reward-Items: true

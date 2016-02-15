@@ -2,8 +2,8 @@
 version: 1.0.0
 main: com.ReanKR.rTutorialReloaded.rTutorialReloaded
 author: ReanKR
-depend: [Vault, BarAPI, TitleAPI]
-description: It is reloaded the more better than rTutorial.
+depend: [Vault]
+description: reloaded the more better than rTutorial.
 commands:
   rtutorial.main:
     description: §erTutorial Reloaded Main command
