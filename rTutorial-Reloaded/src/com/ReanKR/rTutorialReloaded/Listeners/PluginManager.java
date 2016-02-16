@@ -98,7 +98,7 @@ public class PluginManager extends JavaPlugin
 			}
 	    }
 		
-		LoadPluginStatus();
+		LoadPluginStatus(Node);
 		return;
 	}
 	public static void SwitchCompatiblePlugin(String PluginName)
@@ -107,12 +107,12 @@ public class PluginManager extends JavaPlugin
 		ConfigurationSection CS = Config.getConfigurationSection("Compatibles");
 		CS.set(PluginName, Boolean.valueOf(!CS.getBoolean(PluginName)));
 		rTutorialReloaded.plugin.saveConfig();
-		LoadPluginStatus();
+		LoadPluginStatus(CS);
 	}
 	
-	public static void LoadPluginStatus()
+	public static void LoadPluginStatus(ConfigurationSection Node)
 	{
-		ConfigurationSection MainNode = rTutorialReloaded.plugin.getConfig().getConfigurationSection("Compatibles");
+		ConfigurationSection MainNode = Node;
 		rTutorialReloaded.CompatiblePlugins[0] = MainNode.getBoolean("BarAPI");
 		rTutorialReloaded.CompatiblePlugins[1] = MainNode.getBoolean("Vault");
 		rTutorialReloaded.CompatiblePlugins[2] = MainNode.getBoolean("Economy");

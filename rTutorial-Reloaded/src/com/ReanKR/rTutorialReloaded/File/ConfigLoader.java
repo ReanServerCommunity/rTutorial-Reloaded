@@ -133,6 +133,11 @@ public class ConfigLoader
 				                  rTutorialReloaded.ErrorReporting.add("config.yml - Results - Items - " + ItemStr + " - ItemMeta Incorrect Values.");
 				                  continue;
 				                }
+				                /*
+				                catch(NumberFormatException f)
+				                {
+				                	continue;
+				                }*/
 				                for(String Enchant : EnchantList)
 				                {
 				                	String[] Filter = Enchant.split(", ");
@@ -152,6 +157,7 @@ public class ConfigLoader
 			}
 			catch(NullPointerException e)
 			{
+				e.printStackTrace();
 				rTutorialReloaded.ErrorReporting.add("config.yml - " + Str + " - Tried to return null value.");
 			}
 		}
