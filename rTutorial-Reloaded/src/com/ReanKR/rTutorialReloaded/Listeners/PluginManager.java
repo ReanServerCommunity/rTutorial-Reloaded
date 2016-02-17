@@ -107,16 +107,14 @@ public class PluginManager extends JavaPlugin
 		ConfigurationSection CS = Config.getConfigurationSection("Compatibles");
 		CS.set(PluginName, Boolean.valueOf(!CS.getBoolean(PluginName)));
 		rTutorialReloaded.plugin.saveConfig();
-		LoadPluginStatus(CS);
 	}
 	
 	public static void LoadPluginStatus(ConfigurationSection Node)
 	{
-		ConfigurationSection MainNode = Node;
-		rTutorialReloaded.CompatiblePlugins[0] = MainNode.getBoolean("BarAPI");
-		rTutorialReloaded.CompatiblePlugins[1] = MainNode.getBoolean("Vault");
-		rTutorialReloaded.CompatiblePlugins[2] = MainNode.getBoolean("Economy");
-		rTutorialReloaded.CompatiblePlugins[3] = MainNode.getBoolean("TitleAPI");
+		rTutorialReloaded.CompatiblePlugins[0] = Node.getBoolean("BarAPI");
+		rTutorialReloaded.CompatiblePlugins[1] = Node.getBoolean("Vault");
+		rTutorialReloaded.CompatiblePlugins[2] = Node.getBoolean("Economy");
+		rTutorialReloaded.CompatiblePlugins[3] = Node.getBoolean("TitleAPI");
 		return;
 	}
 }

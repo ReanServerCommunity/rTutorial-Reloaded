@@ -3,6 +3,8 @@ package com.ReanKR.rTutorialReloaded.Util;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.bukkit.configuration.ConfigurationSection;
+
 import com.ReanKR.rTutorialReloaded.rTutorialReloaded;
 
 public class VariableManager
@@ -10,6 +12,7 @@ public class VariableManager
 	@SuppressWarnings({ "rawtypes", "unchecked"})
 	public static void InitAllVariable()
 	{
+		rTutorialReloaded.CompatiblePlugins = new boolean[5];
 		rTutorialReloaded.ExceptionCommands = new ArrayList();
 		rTutorialReloaded.ResultCommands = new ArrayList();
 		rTutorialReloaded.ResultItems = new ArrayList();
@@ -25,5 +28,10 @@ public class VariableManager
 		rTutorialReloaded.SavedNewLocation = new HashMap();
 		rTutorialReloaded.CreatingCount = new HashMap();
 		rTutorialReloaded.ErrorReporting = new ArrayList();
+	}
+	
+	public static boolean IgnException(ConfigurationSection Section, String Str)
+	{
+		return Section.contains(Str) ? true : false;
 	}
 }

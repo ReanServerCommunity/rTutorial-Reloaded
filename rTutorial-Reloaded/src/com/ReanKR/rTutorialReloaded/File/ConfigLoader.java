@@ -17,6 +17,7 @@ import com.ReanKR.rTutorialReloaded.rTutorialReloaded;
 import com.ReanKR.rTutorialReloaded.File.FileSection;
 import com.ReanKR.rTutorialReloaded.Listeners.PluginManager;
 import com.ReanKR.rTutorialReloaded.Util.SubSection;
+import com.ReanKR.rTutorialReloaded.Util.VariableManager;
 
 public class ConfigLoader
 {
@@ -120,28 +121,27 @@ public class ConfigLoader
 				                short Durability = 0;
 				                try
 				                {
-				                  ID = Integer.valueOf(ItemNode.getInt("ID"));
-				                  Data = Byte.parseByte(ItemNode.getString("DATA-VALUE"));
-				                  Amounts = Integer.valueOf(ItemNode.getInt("Amounts"));
-				                  Lores = ItemNode.getStringList("DESCRIPTION");
-				                  EnchantList = ItemNode.getStringList("ENCHANTMENT");
-				                  DisplayName = ItemNode.getString("NAME");
-				                  Durability = Short.valueOf(ItemNode.getString("DURABILITY"));
+				                	if(VariableManager.IgnException(ItemNode, "ID")) ID = Integer.valueOf(ItemNode.getInt("ID"));
+				                	if(VariableManager.IgnException(ItemNode, "DATA-VALUE")) Data = Byte.parseByte(ItemNode.getString("DATA-VALUE"));
+				                	if(VariableManager.IgnException(ItemNode, "Amounts")) Amounts = Integer.valueOf(ItemNode.getInt("Amounts"));
+				                	if(VariableManager.IgnException(ItemNode, "DESCRIPTION")) Lores = ItemNode.getStringList("DESCRIPTION");
+				                	if(VariableManager.IgnException(ItemNode, "ENCHANTMENT")) EnchantList = ItemNode.getStringList("ENCHANTMENT");
+				                	if(VariableManager.IgnException(ItemNode, "NAME")) DisplayName = ItemNode.getString("NAME");
+				                	if(VariableManager.IgnException(ItemNode, "DURABILITY")) Durability = Short.valueOf(ItemNode.getString("DURABILITY"));
 				                }
 				                catch (NullPointerException e)
 				                {
 				                  rTutorialReloaded.ErrorReporting.add("config.yml - Results - Items - " + ItemStr + " - ItemMeta Incorrect Values.");
 				                  continue;
 				                }
-				                /*
-				                catch(NumberFormatException f)
+				                
+				                if(! EnchantList.isEmpty())
 				                {
-				                	continue;
-				                }*/
-				                for(String Enchant : EnchantList)
-				                {
-				                	String[] Filter = Enchant.split(", ");
-				                	Enchantments.put(Enchantment.getByName(Filter[0]), Integer.valueOf(Filter[1]));
+					                for(String Enchant : EnchantList)
+					                {
+					                	String[] Filter = Enchant.split(", ");
+					                	Enchantments.put(Enchantment.getByName(Filter[0]), Integer.valueOf(Filter[1]));
+					                }
 				                }
 								ItemStack item = new MaterialData(ID, Data).toItemStack(Amounts);
 								item.getItemMeta().setDisplayName(DisplayName);
