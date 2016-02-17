@@ -37,5 +37,21 @@ public class SubSection
 		String replace = rTutorialReloaded.Prefix + Str;
 		return replace;
 	}
-
+	
+	public static String SubMsg(String MessageMethod, Player player, Boolean Return, Boolean AddPrefix)
+	{
+	    String Message = (String)rTutorialReloaded.SystemMessage.get(MessageMethod);
+	    String Replacement = Message.replaceAll("%player%", player.getName());
+	    if(Return)
+	    {
+	    	if(AddPrefix) return ChatColor.translateAlternateColorCodes('&', rTutorialReloaded.Prefix + Replacement);
+	    	else return ChatColor.translateAlternateColorCodes('&', Replacement);
+	    }
+	    else
+	    {
+	    	if(AddPrefix) player.sendMessage(ChatColor.translateAlternateColorCodes('&', rTutorialReloaded.Prefix + Replacement));
+	    	else player.sendMessage(ChatColor.translateAlternateColorCodes('&', Replacement));
+	    }
+	    return null;
+	}
 }

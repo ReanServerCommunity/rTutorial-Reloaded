@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -72,6 +74,7 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	private ConsoleCommandSender Console = Bukkit.getConsoleSender();
 	private ConfigLoader CL = new ConfigLoader();
 	private LocationLoader LL = new LocationLoader();
+	private rTutorialProgress TP = new rTutorialProgress(this);
 	
 	@Override
 	public void onEnable()
@@ -92,5 +95,17 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	public void onDisable()
 	{
 		
+	}
+	
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
+	{
+		if(cmd.getName().equalsIgnoreCase("rtutorial.main"))
+		{
+			Player player = (Player)sender;
+			TP.TutorialCooldown(player);
+			return true;
+		}
+		return false;
 	}
 }
