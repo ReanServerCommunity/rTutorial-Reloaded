@@ -112,9 +112,9 @@ public class PluginManager extends JavaPlugin
 	public static void LoadPluginStatus(ConfigurationSection Node)
 	{
 		rTutorialReloaded.CompatiblePlugins[0] = Node.getBoolean("BarAPI");
-		rTutorialReloaded.CompatiblePlugins[1] = Node.getBoolean("Vault");
-		rTutorialReloaded.CompatiblePlugins[2] = Node.getBoolean("Economy");
-		rTutorialReloaded.CompatiblePlugins[3] = Node.getBoolean("TitleAPI");
+		rTutorialReloaded.CompatiblePlugins[1] = Node.getBoolean("TitleAPI");
+		rTutorialReloaded.CompatiblePlugins[2] = Node.getBoolean("Vault");
+		rTutorialReloaded.CompatiblePlugins[3] = Node.getBoolean("Economy");
 		return;
 	}
 }

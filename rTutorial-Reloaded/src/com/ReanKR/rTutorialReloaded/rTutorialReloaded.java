@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -13,6 +14,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.ReanKR.rTutorialReloaded.File.ConfigLoader;
+import com.ReanKR.rTutorialReloaded.File.LocationLoader;
 import com.ReanKR.rTutorialReloaded.Listeners.EconomyAPI;
 import com.ReanKR.rTutorialReloaded.Util.ErrorReporter;
 import com.ReanKR.rTutorialReloaded.Util.VariableManager;
@@ -40,8 +42,9 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 
 	// Saved variable loaded by Location.yml
 	public static List<String> LocationMethod; // World,X,Y,Z,Pitch,Yaw
-	public static List<String> MessageMethod; // Main message, Sub message
+	public static HashMap<String, String> MessageMethod; // Location Name, Main message, Sub message
 	public static int MethodAmount = 0; // Location method amount
+	public static HashMap<String, Location> InfoLocation; // Location name, Coordinate, Angle
 	
 	// Saved variable loaded by message.yml 
 	public static Map<String, String> SystemMessage; // MSG_TYPE, Message
@@ -68,6 +71,7 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 	// Substituted for sentance contraction
 	private ConsoleCommandSender Console = Bukkit.getConsoleSender();
 	private ConfigLoader CL = new ConfigLoader();
+	private LocationLoader LL = new LocationLoader();
 	
 	@Override
 	public void onEnable()
@@ -77,6 +81,7 @@ public class rTutorialReloaded extends JavaPlugin implements Listener
 		VariableManager.InitAllVariable();
 		CL.LoadCfg();
 		CL.LoadMessage();
+		LL.LocationCfg();
 		Eco = EconomyAPI.getEconomy();
 		ErrorReporter.ResultErrorReport();
 		Console.sendMessage(Prefix + "」bM」fade 」bb」fy Rean KR,」9 whitehack97@gmail.com");

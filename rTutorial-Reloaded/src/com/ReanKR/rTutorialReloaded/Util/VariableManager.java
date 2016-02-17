@@ -17,7 +17,8 @@ public class VariableManager
 		rTutorialReloaded.ResultCommands = new ArrayList();
 		rTutorialReloaded.ResultItems = new ArrayList();
 		rTutorialReloaded.LocationMethod = new ArrayList();
-		rTutorialReloaded.MessageMethod = new ArrayList();
+		rTutorialReloaded.InfoLocation = new HashMap();
+		rTutorialReloaded.MessageMethod = new HashMap();
 		rTutorialReloaded.SystemMessage = new HashMap();
 		rTutorialReloaded.TutorialStatus = new HashMap();
 		rTutorialReloaded.TutorialComplete = new HashMap();
