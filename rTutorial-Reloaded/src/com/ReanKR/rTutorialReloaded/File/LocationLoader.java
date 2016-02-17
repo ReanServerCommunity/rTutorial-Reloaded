@@ -76,7 +76,7 @@ public class LocationLoader
 				            else if(Detailed.equalsIgnoreCase("Sub"))
 				            {
 				            	if(rTutorialReloaded.CompatiblePlugins[1]) SubMsg = LocInformation.getString(Detailed);
-				            	else rTutorialReloaded.ErrorReporting.add("Location.yml - " + Loc + " - " + Detailed + " - Warning. Your server not use TitleAPI. To show SubMessage disabled.");
+				            	else rTutorialReloaded.ErrorReporting.add("Location.yml - " + Loc + " - " + Detailed + " - Cannot compatibled TitleAPI. Please check your TitleAPI or config.yml");
 				            }
 			         	}
 	  	          	}

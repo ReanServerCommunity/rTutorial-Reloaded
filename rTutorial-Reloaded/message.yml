@@ -20,3 +20,4 @@ Messages:
   BlockChatWhenTutorial: "&c튜토리얼 중에는 명령어나 대화를 할 수 없습니다."
   CancelCommand: "&c취소하려면 %var%"
   ContinueCommand: "&a계속 진행하려면 %var%"
+  ContinueTutorial: "중간에 나간 기록이 있습니다. 튜토리얼을 하시겠습니까?"
